@@ -7,5 +7,9 @@ namespace GestorDeEventosCulturales
 {
     class GestorAutenticacion
     {
+        public bool Login(string nombre, string contrasena)
+        {
+            return dao.ValidarUsuario(nombre, contrasena);
+        }
     }
 }
