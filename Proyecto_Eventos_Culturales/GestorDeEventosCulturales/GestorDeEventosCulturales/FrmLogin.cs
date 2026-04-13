@@ -15,5 +15,21 @@ namespace GestorDeEventosCulturales
         {
             InitializeComponent();
         }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            GestorAutenticacion gestor = new GestorAutenticacion();
+
+            bool acceso = gestor.Login(txtUsuario.Text, txtPassword.Text);
+
+            if (acceso)
+            {
+                MessageBox.Show("Bienvenido");
+            }
+            else
+            {
+                MessageBox.Show("Datos incorrectos");
+            }
+        }
     }
 }
