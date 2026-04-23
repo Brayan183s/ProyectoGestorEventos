@@ -35,7 +35,6 @@
             this.btn_calendario = new System.Windows.Forms.Button();
             this.btn_cerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -105,22 +104,11 @@
             this.lblBienvenida.TabIndex = 7;
             this.lblBienvenida.Text = "Usuario";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(101, 283);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 62);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 709);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.btn_cerrarSesion);
             this.Controls.Add(this.btn_calendario);
@@ -145,6 +133,5 @@
         private System.Windows.Forms.Button btn_calendario;
         private System.Windows.Forms.Button btn_cerrarSesion;
         private System.Windows.Forms.Label lblBienvenida;
-        private System.Windows.Forms.Button button1;
     }
 }

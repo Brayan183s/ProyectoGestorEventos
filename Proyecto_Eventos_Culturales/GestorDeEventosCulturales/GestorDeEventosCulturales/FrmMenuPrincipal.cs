@@ -71,20 +71,6 @@ namespace GestorDeEventosCulturales
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (MySqlConnection con = new ConexionBD().ObtenerConexion())
-                {
-                    con.Open();
-                    MessageBox.Show("Conectado");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+  
     }
 }
