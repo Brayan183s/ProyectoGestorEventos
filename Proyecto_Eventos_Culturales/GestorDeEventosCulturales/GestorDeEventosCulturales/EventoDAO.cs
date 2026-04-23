@@ -47,6 +47,71 @@ namespace GestorDeEventosCulturales
                 return false;
             }
         }
+
+        public List<Evento> ObtenerEventos()
+        {
+            List<Evento> lista = new List<Evento>();
+
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = "SELECT * FROM Evento_cultural";
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Evento
+                            {
+                                Id = reader.GetInt32("id_evento"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.GetString("descripcion"),
+                                Fecha = reader.GetDateTime("fecha"),
+                                Lugar = reader.GetString("lugar"),
+                                Costo = reader.GetDouble("costo")
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public Evento ObtenerPorId(int id)
+        {
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = "SELECT * FROM Evento_cultural WHERE id_evento=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Evento
+                            {
+                                Id = reader.GetInt32("id_evento"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.GetString("descripcion"),
+                                Fecha = reader.GetDateTime("fecha"),
+                                Lugar = reader.GetString("lugar"),
+                                Costo = reader.GetDouble("costo")
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }
        
