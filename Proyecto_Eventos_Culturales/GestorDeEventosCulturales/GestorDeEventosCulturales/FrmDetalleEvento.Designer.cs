@@ -40,12 +40,16 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnMarcarInteres = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblCupo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(328, 224);
+            this.label1.Location = new System.Drawing.Point(403, 130);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 20);
             this.label1.TabIndex = 0;
@@ -54,25 +58,25 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(328, 261);
+            this.label2.Location = new System.Drawing.Point(403, 167);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.Size = new System.Drawing.Size(96, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Descripción";
+            this.label2.Text = "Descripción:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(328, 290);
+            this.label3.Location = new System.Drawing.Point(403, 196);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 20);
+            this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Fecha";
+            this.label3.Text = "Fecha:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(328, 323);
+            this.label4.Location = new System.Drawing.Point(403, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 20);
             this.label4.TabIndex = 3;
@@ -81,16 +85,16 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(328, 362);
+            this.label5.Location = new System.Drawing.Point(403, 309);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.Size = new System.Drawing.Size(55, 20);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Costo";
+            this.label5.Text = "Costo:";
             // 
             // lblCosto
             // 
             this.lblCosto.AutoSize = true;
-            this.lblCosto.Location = new System.Drawing.Point(398, 362);
+            this.lblCosto.Location = new System.Drawing.Point(473, 309);
             this.lblCosto.Name = "lblCosto";
             this.lblCosto.Size = new System.Drawing.Size(51, 20);
             this.lblCosto.TabIndex = 9;
@@ -99,7 +103,7 @@
             // lblLugar
             // 
             this.lblLugar.AutoSize = true;
-            this.lblLugar.Location = new System.Drawing.Point(398, 323);
+            this.lblLugar.Location = new System.Drawing.Point(473, 270);
             this.lblLugar.Name = "lblLugar";
             this.lblLugar.Size = new System.Drawing.Size(51, 20);
             this.lblLugar.TabIndex = 8;
@@ -108,7 +112,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(398, 290);
+            this.lblFecha.Location = new System.Drawing.Point(473, 196);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(51, 20);
             this.lblFecha.TabIndex = 7;
@@ -117,7 +121,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(426, 261);
+            this.lblDescripcion.Location = new System.Drawing.Point(501, 167);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(51, 20);
             this.lblDescripcion.TabIndex = 6;
@@ -126,7 +130,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(398, 224);
+            this.lblNombre.Location = new System.Drawing.Point(473, 130);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(60, 20);
             this.lblNombre.TabIndex = 5;
@@ -152,11 +156,51 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(403, 230);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(48, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Hora:";
+            // 
+            // lblHora
+            // 
+            this.lblHora.AutoSize = true;
+            this.lblHora.Location = new System.Drawing.Point(473, 230);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(51, 20);
+            this.lblHora.TabIndex = 13;
+            this.lblHora.Text = "label7";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(406, 344);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Cupo:";
+            // 
+            // lblCupo
+            // 
+            this.lblCupo.AutoSize = true;
+            this.lblCupo.Location = new System.Drawing.Point(473, 344);
+            this.lblCupo.Name = "lblCupo";
+            this.lblCupo.Size = new System.Drawing.Size(51, 20);
+            this.lblCupo.TabIndex = 15;
+            this.lblCupo.Text = "label8";
+            // 
             // FrmDetalleEvento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 770);
+            this.Controls.Add(this.lblCupo);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.lblHora);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnMarcarInteres);
             this.Controls.Add(this.lblCosto);
@@ -191,5 +235,9 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Button btnMarcarInteres;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblHora;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblCupo;
     }
 }

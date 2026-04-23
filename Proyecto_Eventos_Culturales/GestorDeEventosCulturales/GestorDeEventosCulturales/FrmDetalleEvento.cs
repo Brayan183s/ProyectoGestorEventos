@@ -31,10 +31,12 @@ namespace GestorDeEventosCulturales
             if (e != null)
             {
                 lblNombre.Text = e.Nombre;
-                lblDescripcion.Text = e.Descripcion;
                 lblFecha.Text = e.Fecha.ToShortDateString();
+                lblHora.Text = e.Hora.ToString(@"hh\:mm");
                 lblLugar.Text = e.Lugar;
-                lblCosto.Text = e.Costo.ToString();
+                lblCosto.Text = "$ " + e.Costo.ToString();
+                lblCupo.Text = e.Cupo.ToString();
+                lblDescripcion.Text = e.Descripcion;
             }
         }
 
