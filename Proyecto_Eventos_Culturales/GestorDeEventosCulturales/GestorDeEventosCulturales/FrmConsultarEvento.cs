@@ -21,6 +21,11 @@ namespace GestorDeEventosCulturales
             CargarEventos();
             dgvEventos.Columns["Id"].Visible = false;
             dgvEventos.Columns["Descripcion"].Visible = false;
+            dgvEventos.Columns["Organizador"].Visible = false;
+            dgvEventos.Columns["Tipo"].Visible = false;
+            dgvEventos.Columns["Cupo"].Visible = false;
+            dgvEventos.Columns["Hora"].Visible = false;
+            dgvEventos.Columns["Costo"].Visible = false;
             dgvEventos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
