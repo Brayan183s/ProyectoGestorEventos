@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace GestorDeEventosCulturales
@@ -18,17 +12,49 @@ namespace GestorDeEventosCulturales
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            GestorAutenticacion gestor = new GestorAutenticacion();
-
-            bool acceso = gestor.Login(txtUsuario.Text, txtPassword.Text);
-
-            if (acceso)
+            try
             {
-                MessageBox.Show("Bienvenido");
+                GestorAutenticacion gestor = new GestorAutenticacion();
+
+                Usuario usuario = gestor.Login(txtUsuario.Text, txtPassword.Text);
+
+                if (usuario != null)
+                {
+                    MessageBox.Show("Bienvenido " + usuario.Nombre);
+
+                    FrmMenuPrincipal f = new FrmMenuPrincipal(usuario);
+
+                    // CUANDO SE CIERRE EL MENÚ → REGRESAR AL LOGIN
+                    f.FormClosed += (s, args) => this.Show();
+
+                    f.Show();
+
+                    this.Hide(); // ocultar login
+                }
+                else
+                {
+                    MessageBox.Show("Datos incorrectos", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Datos incorrectos");
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show(
+                "¿Desea salir?",
+                "Salir",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (r == DialogResult.Yes)
+            {
+                Application.Exit(); // Cierra TODA la aplicación correctamente
             }
         }
     }
