@@ -11,9 +11,11 @@ namespace GestorDeEventosCulturales
 {
     public partial class FrmConsultarEvento : Form
     {
-        public FrmConsultarEvento()
+        private Usuario usuarioActual;
+        public FrmConsultarEvento(Usuario u)
         {
             InitializeComponent();
+            usuarioActual = u;
         }
 
         private void FrmConsultarEvento_Load(object sender, EventArgs e)
@@ -41,8 +43,8 @@ namespace GestorDeEventosCulturales
             {
                 int id = Convert.ToInt32(dgvEventos.CurrentRow.Cells["Id"].Value);
 
-                FrmDetalleEvento f = new FrmDetalleEvento(id);
-                f.Show();
+                FrmDetalleEvento f = new FrmDetalleEvento(id, usuarioActual);
+                f.ShowDialog();
             }
 
         }

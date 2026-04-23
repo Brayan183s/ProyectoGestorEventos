@@ -12,10 +12,13 @@ namespace GestorDeEventosCulturales
     public partial class FrmDetalleEvento : Form
     {
         private int idEvento;
-        public FrmDetalleEvento(int id)
+        private Usuario usuarioActual;
+
+        public FrmDetalleEvento(int id, Usuario u)
         {
             InitializeComponent();
             idEvento = id;
+            usuarioActual = u;
         }
 
         private void FrmDetalleEvento_Load(object sender, EventArgs e)
@@ -47,7 +50,18 @@ namespace GestorDeEventosCulturales
 
         private void btnMarcarInteres_Click(object sender, EventArgs e)
         {
+            try
+            {
+                EventoDAO dao = new EventoDAO();
 
+                dao.MarcarInteres(usuarioActual.Id, idEvento);
+
+                MessageBox.Show("Evento marcado como interés ⭐");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
     }
 }

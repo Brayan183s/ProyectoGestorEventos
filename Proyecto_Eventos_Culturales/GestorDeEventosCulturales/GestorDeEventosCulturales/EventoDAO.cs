@@ -114,6 +114,26 @@ namespace GestorDeEventosCulturales
 
             return null;
         }
+
+        public void MarcarInteres(int idUsuario, int idEvento)
+        {
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = @"INSERT INTO evento_interes (id_usuario, id_evento, fecha_marcado)
+                VALUES (@u,@e,NOW())
+                ON DUPLICATE KEY UPDATE fecha_marcado = NOW()"; // 🔥 AQUÍ VA
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@u", idUsuario);
+                    cmd.Parameters.AddWithValue("@e", idEvento);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
        
