@@ -5,7 +5,13 @@ using System.Text;
 
 namespace GestorDeEventosCulturales
 {
-    class GestorAutenticacion
+    public class GestorAutenticacion
     {
+        UsuarioDAO dao = new UsuarioDAO();
+
+        public Usuario Login(string nombre, string contrasena)
+        {
+            return dao.ObtenerUsuario(nombre, contrasena);
+        }
     }
 }

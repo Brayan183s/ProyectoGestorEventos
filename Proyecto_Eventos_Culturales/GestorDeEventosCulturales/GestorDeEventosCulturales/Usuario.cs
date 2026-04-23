@@ -5,10 +5,11 @@ using System.Text;
 
 namespace GestorDeEventosCulturales
 {
-    class Usuario
+    public class Usuario
     {
-        askjlhfqkebfliwfnñoq
-            ljewlwiffhw3
-
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Contrasena { get; set; }
+        public string TipoUsuario { get; set; }
     }
 }

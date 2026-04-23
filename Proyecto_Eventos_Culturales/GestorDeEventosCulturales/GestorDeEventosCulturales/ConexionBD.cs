@@ -8,13 +8,11 @@ namespace GestorDeEventosCulturales
 {
     public class ConexionBD
     {
-        private string cadena = "server=localhost;database=eventos_culturales;user=root;password=1234;";
+        private string cadena = "server=127.0.0.1;database=sgec;user=root;password=Gears.20s;Pooling=true;Max Pool Size=50;Connection Timeout=30;";
 
         public MySqlConnection ObtenerConexion()
         {
-            MySqlConnection conexion = new MySqlConnection(cadena);
-            conexion.Open();
-            return conexion;
+            return new MySqlConnection(cadena);
         }
     }
 }
