@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace GestorDeEventosCulturales
 {
-    public partial class FrmConsultarEvento : Form
+    public partial class FrmEventosProximos : Form
     {
         private Usuario usuarioActual;
-        public FrmConsultarEvento(Usuario u)
+        public FrmEventosProximos(Usuario u)
         {
             InitializeComponent();
             usuarioActual = u;
