@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace GestorDeEventosCulturales
 {
-    public partial class FrmEventosProximos : Form
+    public partial class FrmConsultarEvento : Form
     {
-        public FrmEventosProximos()
+        public FrmConsultarEvento()
         {
             InitializeComponent();
         }

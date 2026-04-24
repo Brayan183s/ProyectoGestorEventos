@@ -68,7 +68,7 @@ namespace GestorDeEventosCulturales
 
         private void btn_consultarEventos_Click(object sender, EventArgs e)
         {
-            FrmEventosProximos f = new FrmEventosProximos(usuarioActual);
+            FrmConsultarEvento f = new FrmConsultarEvento(usuarioActual);
             f.ShowDialog();
         }
 
