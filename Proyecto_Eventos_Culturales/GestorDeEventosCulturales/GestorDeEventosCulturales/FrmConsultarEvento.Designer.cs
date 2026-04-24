@@ -1,6 +1,6 @@
 ﻿namespace GestorDeEventosCulturales
 {
-    partial class FrmConsultarEvento
+    partial class FrmEventosProximos
     {
         /// <summary>
         /// Required designer variable.
