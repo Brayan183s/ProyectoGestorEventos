@@ -174,6 +174,54 @@ namespace GestorDeEventosCulturales
 
             return lista;
         }
+
+        public List<Evento> FiltrarEventos(DateTime desde, DateTime hasta, double? costoMin, double? costoMax)
+        {
+            List<Evento> lista = new List<Evento>();
+
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = @"SELECT * FROM Evento_cultural 
+                         WHERE fecha BETWEEN @desde AND @hasta";
+
+                if (costoMin != null)
+                    query += " AND costo >= @min";
+
+                if (costoMax != null)
+                    query += " AND costo <= @max";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@desde", desde);
+                    cmd.Parameters.AddWithValue("@hasta", hasta);
+
+                    if (costoMin != null)
+                        cmd.Parameters.AddWithValue("@min", costoMin);
+
+                    if (costoMax != null)
+                        cmd.Parameters.AddWithValue("@max", costoMax);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Evento
+                            {
+                                Id = reader.GetInt32("id_evento"),
+                                Nombre = reader.GetString("nombre"),
+                                Fecha = reader.GetDateTime("fecha"),
+                                Lugar = reader.GetString("lugar"),
+                                Costo = reader.GetDouble("costo")
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
     }
 }
        

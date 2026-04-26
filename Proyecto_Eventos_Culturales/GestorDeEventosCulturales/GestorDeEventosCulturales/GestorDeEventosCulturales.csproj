@@ -71,6 +71,12 @@
     <Compile Include="FrmEventoInteres.Designer.cs">
       <DependentUpon>FrmEventoInteres.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmEventosProximos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEventosProximos.Designer.cs">
+      <DependentUpon>FrmEventosProximos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmEventoInteres.resx">
       <DependentUpon>FrmEventoInteres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEventosProximos.resx">
+      <DependentUpon>FrmEventosProximos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

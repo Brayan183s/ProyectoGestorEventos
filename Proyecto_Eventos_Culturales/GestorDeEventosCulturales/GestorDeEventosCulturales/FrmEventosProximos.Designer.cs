@@ -1,6 +1,6 @@
 ﻿namespace GestorDeEventosCulturales
 {
-    partial class FrmEventoInteres
+    partial class FrmEventosProximos
     {
         /// <summary>
         /// Required designer variable.
@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvInteres = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.btnVerDetalle = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInteres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvInteres
-            // 
-            this.dgvInteres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInteres.Location = new System.Drawing.Point(200, 161);
-            this.dgvInteres.Name = "dgvInteres";
-            this.dgvInteres.RowTemplate.Height = 28;
-            this.dgvInteres.Size = new System.Drawing.Size(718, 385);
-            this.dgvInteres.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(409, 76);
+            this.label1.Location = new System.Drawing.Point(334, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(327, 64);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Mis eventos";
+            this.label1.Size = new System.Drawing.Size(479, 64);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Eventos Proximos";
+            // 
+            // dgvEventos
+            // 
+            this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEventos.Location = new System.Drawing.Point(216, 195);
+            this.dgvEventos.Name = "dgvEventos";
+            this.dgvEventos.RowTemplate.Height = 28;
+            this.dgvEventos.Size = new System.Drawing.Size(689, 257);
+            this.dgvEventos.TabIndex = 1;
             // 
             // btnVerDetalle
             // 
-            this.btnVerDetalle.Location = new System.Drawing.Point(466, 581);
+            this.btnVerDetalle.Location = new System.Drawing.Point(472, 525);
             this.btnVerDetalle.Name = "btnVerDetalle";
             this.btnVerDetalle.Size = new System.Drawing.Size(188, 70);
             this.btnVerDetalle.TabIndex = 3;
@@ -66,7 +66,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(466, 669);
+            this.btnCancelar.Location = new System.Drawing.Point(472, 626);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(188, 70);
             this.btnCancelar.TabIndex = 4;
@@ -74,19 +74,19 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // FrmEventoInteres
+            // FrmEventosProximos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 760);
+            this.ClientSize = new System.Drawing.Size(1120, 759);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnVerDetalle);
+            this.Controls.Add(this.dgvEventos);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgvInteres);
-            this.Name = "FrmEventoInteres";
-            this.Text = "Calendario";
+            this.Name = "FrmEventosProximos";
+            this.Text = "Eventos Proximos";
             this.Load += new System.EventHandler(this.FrmEventosProximos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInteres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,8 +94,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvInteres;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dgvEventos;
         private System.Windows.Forms.Button btnVerDetalle;
         private System.Windows.Forms.Button btnCancelar;
     }
