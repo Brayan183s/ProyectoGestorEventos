@@ -19,10 +19,6 @@ namespace GestorDeEventosCulturales
 
         }
 
-        private void btnVerDetalle_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -31,21 +27,41 @@ namespace GestorDeEventosCulturales
 
         private void FrmEventosProximos_Load(object sender, EventArgs e)
         {
-            CargarEvento();
-            dgvInteres.Columns["Id"].Visible = false;
-            dgvInteres.Columns["Descripcion"].Visible = false;
-            dgvInteres.Columns["Organizador"].Visible = false;
-            dgvInteres.Columns["Tipo"].Visible = false;
-            dgvInteres.Columns["Cupo"].Visible = false;
-            dgvInteres.Columns["Hora"].Visible = false;
-            dgvInteres.Columns["Costo"].Visible = false;
+            CargarEvento();             
             dgvInteres.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
+        private void btnVerDetalle_Click(object sender, EventArgs e)
+        {
+            if (dgvInteres.CurrentRow != null)
+            {
+                EventoCalendario fila = (EventoCalendario)dgvInteres.CurrentRow.DataBoundItem;
+
+                FrmDetalleEvento f = new FrmDetalleEvento(fila.Id, usuarioActual);
+                f.ShowDialog();
+            }
+        }
         private void CargarEvento()
         {
             EventoDAO dao = new EventoDAO();
-            dgvInteres.DataSource = dao.ObtenerEventosInteres(usuarioActual.Id);
+
+            var eventos = dao.ObtenerEventosInteres(usuarioActual.Id);
+
+            var lista = eventos
+                .OrderBy(e => e.Fecha)
+                .Select(e => new EventoCalendario
+                {
+                    Id = e.Id, // 🔥 guardar el id
+                    Fecha = e.Fecha.ToShortDateString(),
+                    Evento = e.Nombre + " - " + e.Lugar
+                })
+                .ToList();
+
+            dgvInteres.DataSource = lista;
+
+            dgvInteres.Columns["Id"].Visible = false;
         }
+
+
     }
 }

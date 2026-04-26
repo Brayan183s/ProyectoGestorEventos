@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="EventoCalendario.cs" />
     <Compile Include="EventoDAO.cs" />
     <Compile Include="FrmConsultarEvento.cs">
       <SubType>Form</SubType>
