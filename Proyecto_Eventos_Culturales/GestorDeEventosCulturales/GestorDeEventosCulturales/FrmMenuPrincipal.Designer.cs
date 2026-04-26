@@ -85,6 +85,7 @@
             this.btn_calendario.TabIndex = 4;
             this.btn_calendario.Text = "Calendario";
             this.btn_calendario.UseVisualStyleBackColor = true;
+            this.btn_calendario.Click += new System.EventHandler(this.btn_calendario_Click);
             // 
             // btn_cerrarSesion
             // 
