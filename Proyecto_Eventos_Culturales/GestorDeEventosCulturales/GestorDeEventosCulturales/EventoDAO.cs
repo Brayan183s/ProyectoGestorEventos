@@ -5,6 +5,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
+
 namespace GestorDeEventosCulturales
 {
     class EventoDAO
@@ -65,12 +66,16 @@ namespace GestorDeEventosCulturales
                         {
                             lista.Add(new Evento
                             {
-                                Id = reader.GetInt32("id_evento"),
-                                Nombre = reader.GetString("nombre"),
-                                Descripcion = reader.GetString("descripcion"),
-                                Fecha = reader.GetDateTime("fecha"),
-                                Lugar = reader.GetString("lugar"),
-                                Costo = reader.GetDouble("costo")
+                                Id = Convert.ToInt32(reader["id_evento"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Descripcion = reader["descripcion"].ToString(),
+                                Fecha = Convert.ToDateTime(reader["fecha"]),
+                                Hora = reader["hora"] != DBNull.Value ? (TimeSpan)reader["hora"] : TimeSpan.Zero,
+                                Lugar = reader["lugar"].ToString(),
+                                Organizador = reader["organizador"].ToString(),
+                                Tipo = reader["tipo"].ToString(),
+                                Cupo = reader["cupo"] != DBNull.Value ? Convert.ToInt32(reader["cupo"]) : 0,
+                                Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0
                             });
                         }
                     }
@@ -175,7 +180,7 @@ namespace GestorDeEventosCulturales
             return lista;
         }
 
-        public List<Evento> FiltrarEventos(DateTime desde, DateTime hasta, double? costoMin, double? costoMax)
+        public List<Evento> FiltrarSimple(DateTime desde, DateTime hasta, double costoMax)
         {
             List<Evento> lista = new List<Evento>();
 
@@ -184,37 +189,33 @@ namespace GestorDeEventosCulturales
                 con.Open();
 
                 string query = @"SELECT * FROM Evento_cultural 
-                         WHERE fecha BETWEEN @desde AND @hasta";
-
-                if (costoMin != null)
-                    query += " AND costo >= @min";
-
-                if (costoMax != null)
-                    query += " AND costo <= @max";
+                         WHERE fecha BETWEEN @desde AND @hasta
+                         AND costo <= @costo";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@desde", desde);
                     cmd.Parameters.AddWithValue("@hasta", hasta);
-
-                    if (costoMin != null)
-                        cmd.Parameters.AddWithValue("@min", costoMin);
-
-                    if (costoMax != null)
-                        cmd.Parameters.AddWithValue("@max", costoMax);
+                    cmd.Parameters.AddWithValue("@costo", costoMax);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            lista.Add(new Evento
-                            {
-                                Id = reader.GetInt32("id_evento"),
-                                Nombre = reader.GetString("nombre"),
-                                Fecha = reader.GetDateTime("fecha"),
-                                Lugar = reader.GetString("lugar"),
-                                Costo = reader.GetDouble("costo")
-                            });
+                            Evento e = new Evento();
+
+                            e.Id = Convert.ToInt32(reader["id_evento"]);
+                            e.Nombre = reader["nombre"].ToString();
+                            e.Descripcion = reader["descripcion"].ToString();
+                            e.Fecha = Convert.ToDateTime(reader["fecha"]);
+                            e.Hora = reader["hora"] != DBNull.Value ? (TimeSpan)reader["hora"] : TimeSpan.Zero;
+                            e.Lugar = reader["lugar"].ToString();
+                            e.Organizador = reader["organizador"].ToString();
+                            e.Tipo = reader["tipo"].ToString();
+                            e.Cupo = reader["cupo"] != DBNull.Value ? Convert.ToInt32(reader["cupo"]) : 0;
+                            e.Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0;
+
+                            lista.Add(e);
                         }
                     }
                 }
