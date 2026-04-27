@@ -37,6 +37,10 @@
             this.txtCostoMin = new System.Windows.Forms.TextBox();
             this.txtCostoMax = new System.Windows.Forms.TextBox();
             this.txtFiltrar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,24 +48,24 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(334, 82);
+            this.label1.Location = new System.Drawing.Point(318, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(479, 64);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Eventos Proximos";
+            this.label1.Text = "Eventos Próximos";
             // 
             // dgvEventos
             // 
             this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEventos.Location = new System.Drawing.Point(57, 195);
+            this.dgvEventos.Location = new System.Drawing.Point(50, 141);
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.RowTemplate.Height = 28;
-            this.dgvEventos.Size = new System.Drawing.Size(950, 257);
+            this.dgvEventos.Size = new System.Drawing.Size(1009, 311);
             this.dgvEventos.TabIndex = 1;
             // 
             // btnVerDetalle
             // 
-            this.btnVerDetalle.Location = new System.Drawing.Point(472, 525);
+            this.btnVerDetalle.Location = new System.Drawing.Point(680, 477);
             this.btnVerDetalle.Name = "btnVerDetalle";
             this.btnVerDetalle.Size = new System.Drawing.Size(188, 70);
             this.btnVerDetalle.TabIndex = 3;
@@ -71,7 +75,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(472, 626);
+            this.btnCancelar.Location = new System.Drawing.Point(680, 655);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(188, 70);
             this.btnCancelar.TabIndex = 4;
@@ -81,35 +85,35 @@
             // 
             // dtpDesde
             // 
-            this.dtpDesde.Location = new System.Drawing.Point(1111, 119);
+            this.dtpDesde.Location = new System.Drawing.Point(272, 477);
             this.dtpDesde.Name = "dtpDesde";
             this.dtpDesde.Size = new System.Drawing.Size(200, 26);
             this.dtpDesde.TabIndex = 5;
             // 
             // dtpHasta
             // 
-            this.dtpHasta.Location = new System.Drawing.Point(1111, 170);
+            this.dtpHasta.Location = new System.Drawing.Point(272, 557);
             this.dtpHasta.Name = "dtpHasta";
             this.dtpHasta.Size = new System.Drawing.Size(200, 26);
             this.dtpHasta.TabIndex = 6;
             // 
             // txtCostoMin
             // 
-            this.txtCostoMin.Location = new System.Drawing.Point(1144, 242);
+            this.txtCostoMin.Location = new System.Drawing.Point(272, 626);
             this.txtCostoMin.Name = "txtCostoMin";
-            this.txtCostoMin.Size = new System.Drawing.Size(116, 26);
+            this.txtCostoMin.Size = new System.Drawing.Size(200, 26);
             this.txtCostoMin.TabIndex = 7;
             // 
             // txtCostoMax
             // 
-            this.txtCostoMax.Location = new System.Drawing.Point(1144, 304);
+            this.txtCostoMax.Location = new System.Drawing.Point(272, 699);
             this.txtCostoMax.Name = "txtCostoMax";
-            this.txtCostoMax.Size = new System.Drawing.Size(116, 26);
+            this.txtCostoMax.Size = new System.Drawing.Size(200, 26);
             this.txtCostoMax.TabIndex = 8;
             // 
             // txtFiltrar
             // 
-            this.txtFiltrar.Location = new System.Drawing.Point(1111, 382);
+            this.txtFiltrar.Location = new System.Drawing.Point(680, 567);
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.Size = new System.Drawing.Size(188, 70);
             this.txtFiltrar.TabIndex = 9;
@@ -117,11 +121,52 @@
             this.txtFiltrar.UseVisualStyleBackColor = true;
             this.txtFiltrar.Click += new System.EventHandler(this.txtFiltrar_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(117, 483);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Fecha Inicial:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(117, 562);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 20);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Fecha Final:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(117, 632);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 20);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Costo Minimo:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(117, 705);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 20);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Costo Maximo:";
+            // 
             // FrmEventosProximos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1513, 759);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1110, 759);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFiltrar);
             this.Controls.Add(this.txtCostoMax);
             this.Controls.Add(this.txtCostoMin);
@@ -151,5 +196,9 @@
         private System.Windows.Forms.TextBox txtCostoMin;
         private System.Windows.Forms.TextBox txtCostoMax;
         private System.Windows.Forms.Button txtFiltrar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

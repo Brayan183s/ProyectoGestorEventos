@@ -20,16 +20,14 @@ namespace GestorDeEventosCulturales
 
                 if (usuario != null)
                 {
-                    MessageBox.Show("Bienvenido " + usuario.Nombre);
-
                     FrmMenuPrincipal f = new FrmMenuPrincipal(usuario);
 
-                    // CUANDO SE CIERRE EL MENÚ → REGRESAR AL LOGIN
+                   
                     f.FormClosed += (s, args) => this.Show();
 
                     f.Show();
 
-                    this.Hide(); // ocultar login
+                    this.Hide(); 
                 }
                 else
                 {
@@ -54,7 +52,7 @@ namespace GestorDeEventosCulturales
 
             if (r == DialogResult.Yes)
             {
-                Application.Exit(); // Cierra TODA la aplicación correctamente
+                Application.Exit(); 
             }
         }
     }

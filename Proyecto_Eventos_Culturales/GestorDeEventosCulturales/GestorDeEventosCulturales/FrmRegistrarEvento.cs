@@ -79,7 +79,7 @@ namespace GestorDeEventosCulturales
             cmbTipo.Items.Add("Artístico");
             cmbTipo.Items.Add("Social");
 
-            cmbTipo.SelectedIndex = 0; // opción por defecto
+            cmbTipo.SelectedIndex = 0; 
         }
 
         private void btn_Salir_Click(object sender, EventArgs e)

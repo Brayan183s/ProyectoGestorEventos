@@ -49,7 +49,7 @@ namespace GestorDeEventosCulturales
             {
                 FrmLogin login = new FrmLogin();
 
-                Application.Restart(); // correcto
+                Application.Restart(); 
             }
         }
 
