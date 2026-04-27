@@ -14,6 +14,7 @@ namespace GestorDeEventosCulturales
         public FrmRegistrarEvento()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void Txt_Guardar_Click(object sender, EventArgs e)

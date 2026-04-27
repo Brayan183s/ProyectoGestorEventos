@@ -17,6 +17,7 @@ namespace GestorDeEventosCulturales
         public FrmMenuPrincipal(Usuario u)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             usuarioActual = u;
         }
 
@@ -61,7 +62,7 @@ namespace GestorDeEventosCulturales
                 return;
             }
 
-            // abrir formulario registrar evento
+           
             FrmRegistrarEvento f = new FrmRegistrarEvento();
             f.ShowDialog();
         }

@@ -17,6 +17,7 @@ namespace GestorDeEventosCulturales
         public FrmDetalleEvento(int id, Usuario u)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             idEvento = id;
             usuarioActual = u;
         }

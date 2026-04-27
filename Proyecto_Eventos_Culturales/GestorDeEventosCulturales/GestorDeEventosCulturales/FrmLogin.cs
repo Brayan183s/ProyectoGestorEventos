@@ -8,6 +8,7 @@ namespace GestorDeEventosCulturales
         public FrmLogin()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void btn_login_Click(object sender, EventArgs e)
