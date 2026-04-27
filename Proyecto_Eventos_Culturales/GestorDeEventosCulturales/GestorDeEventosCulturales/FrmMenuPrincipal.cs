@@ -72,6 +72,18 @@ namespace GestorDeEventosCulturales
             f.ShowDialog();
         }
 
+        private void btn_eventosProximos_Click(object sender, EventArgs e)
+        {
+            FrmEventosProximos f = new FrmEventosProximos(usuarioActual);
+            f.ShowDialog();
+        }
+
+        private void btn_calendario_Click(object sender, EventArgs e)
+        {
+            FrmEventoInteres f = new FrmEventoInteres(usuarioActual);
+            f.ShowDialog();
+        }
+
   
     }
 }

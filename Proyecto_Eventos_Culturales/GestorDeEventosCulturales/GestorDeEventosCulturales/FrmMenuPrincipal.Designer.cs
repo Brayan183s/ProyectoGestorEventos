@@ -75,6 +75,7 @@
             this.btn_eventosProximos.TabIndex = 3;
             this.btn_eventosProximos.Text = "Eventos Proximos";
             this.btn_eventosProximos.UseVisualStyleBackColor = true;
+            this.btn_eventosProximos.Click += new System.EventHandler(this.btn_eventosProximos_Click);
             // 
             // btn_calendario
             // 
@@ -84,6 +85,7 @@
             this.btn_calendario.TabIndex = 4;
             this.btn_calendario.Text = "Calendario";
             this.btn_calendario.UseVisualStyleBackColor = true;
+            this.btn_calendario.Click += new System.EventHandler(this.btn_calendario_Click);
             // 
             // btn_cerrarSesion
             // 

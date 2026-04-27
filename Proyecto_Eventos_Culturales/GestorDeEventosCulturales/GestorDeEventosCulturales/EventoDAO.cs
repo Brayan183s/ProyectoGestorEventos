@@ -5,6 +5,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 
+
 namespace GestorDeEventosCulturales
 {
     class EventoDAO
@@ -23,7 +24,7 @@ namespace GestorDeEventosCulturales
                 (nombre, descripcion, fecha, hora, lugar, organizador, tipo, cupo, costo)
                 VALUES(@n,@d,@f,@h,@l,@o,@t,@cu,@c)";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, con)) // 🔥 IMPORTANTE
+                    using (MySqlCommand cmd = new MySqlCommand(query, con)) 
                     {
                         cmd.Parameters.AddWithValue("@n", e.Nombre);
                         cmd.Parameters.AddWithValue("@d", e.Descripcion);
@@ -65,12 +66,16 @@ namespace GestorDeEventosCulturales
                         {
                             lista.Add(new Evento
                             {
-                                Id = reader.GetInt32("id_evento"),
-                                Nombre = reader.GetString("nombre"),
-                                Descripcion = reader.GetString("descripcion"),
-                                Fecha = reader.GetDateTime("fecha"),
-                                Lugar = reader.GetString("lugar"),
-                                Costo = reader.GetDouble("costo")
+                                Id = Convert.ToInt32(reader["id_evento"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Descripcion = reader["descripcion"].ToString(),
+                                Fecha = Convert.ToDateTime(reader["fecha"]),
+                                Hora = reader["hora"] != DBNull.Value ? (TimeSpan)reader["hora"] : TimeSpan.Zero,
+                                Lugar = reader["lugar"].ToString(),
+                                Organizador = reader["organizador"].ToString(),
+                                Tipo = reader["tipo"].ToString(),
+                                Cupo = reader["cupo"] != DBNull.Value ? Convert.ToInt32(reader["cupo"]) : 0,
+                                Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0
                             });
                         }
                     }
@@ -123,7 +128,7 @@ namespace GestorDeEventosCulturales
 
                 string query = @"INSERT INTO evento_interes (id_usuario, id_evento, fecha_marcado)
                 VALUES (@u,@e,NOW())
-                ON DUPLICATE KEY UPDATE fecha_marcado = NOW()"; // 🔥 AQUÍ VA
+                ON DUPLICATE KEY UPDATE fecha_marcado = NOW()"; 
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -133,6 +138,91 @@ namespace GestorDeEventosCulturales
                     cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public List<Evento> ObtenerEventosInteres(int idUsuario)
+        {
+            List<Evento> lista = new List<Evento>();
+
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = @"SELECT e.* 
+                         FROM Evento_cultural e
+                         JOIN evento_interes i ON e.id_evento = i.id_evento
+                         WHERE i.id_usuario = @u";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@u", idUsuario);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Evento
+                            {
+                                Id = reader.GetInt32("id_evento"),
+                                Nombre = reader.GetString("nombre"),
+                                Descripcion = reader.GetString("descripcion"),
+                                Fecha = reader.GetDateTime("fecha"),
+                                Hora = reader.GetTimeSpan("hora"),
+                                Lugar = reader.GetString("lugar"),
+                                Costo = reader.GetDouble("costo"),
+                                Cupo = reader.GetInt32("cupo")
+                            });
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public List<Evento> FiltrarEventos(DateTime desde, DateTime hasta, double costoMin, double costoMax)
+        {
+            List<Evento> lista = new List<Evento>();
+
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+                string query = @"SELECT id_evento, nombre, descripcion, fecha, hora, lugar, organizador, tipo, cupo, costo 
+                         FROM Evento_cultural
+                         WHERE fecha BETWEEN @desde AND @hasta
+                         AND costo BETWEEN @min AND @max";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@desde", desde.Date);
+                    cmd.Parameters.AddWithValue("@hasta", hasta.Date);
+                    cmd.Parameters.AddWithValue("@min", costoMin);
+                    cmd.Parameters.AddWithValue("@max", costoMax);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Evento e = new Evento();
+
+                            e.Id = Convert.ToInt32(reader["id_evento"]);
+                            e.Nombre = reader["nombre"].ToString();
+                            e.Descripcion = reader["descripcion"].ToString();
+                            e.Fecha = Convert.ToDateTime(reader["fecha"]);
+                            e.Hora = reader["hora"] != DBNull.Value ? (TimeSpan)reader["hora"] : TimeSpan.Zero;
+                            e.Lugar = reader["lugar"].ToString();
+                            e.Organizador = reader["organizador"].ToString();
+                            e.Tipo = reader["tipo"].ToString();
+                            e.Cupo = reader["cupo"] != DBNull.Value ? Convert.ToInt32(reader["cupo"]) : 0;
+                            e.Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0;
+
+                            lista.Add(e);
+                        }
+                    }
+                }
+            }
+
+            return lista;
         }
     }
 }

@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.5.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data, Version=9.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="EventoCalendario.cs" />
     <Compile Include="EventoDAO.cs" />
     <Compile Include="FrmConsultarEvento.cs">
       <SubType>Form</SubType>
@@ -64,6 +65,18 @@
     </Compile>
     <Compile Include="FrmDetalleEvento.Designer.cs">
       <DependentUpon>FrmDetalleEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEventoInteres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEventoInteres.Designer.cs">
+      <DependentUpon>FrmEventoInteres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEventosProximos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEventosProximos.Designer.cs">
+      <DependentUpon>FrmEventosProximos.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -93,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetalleEvento.resx">
       <DependentUpon>FrmDetalleEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEventoInteres.resx">
+      <DependentUpon>FrmEventoInteres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEventosProximos.resx">
+      <DependentUpon>FrmEventosProximos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
