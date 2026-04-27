@@ -24,7 +24,7 @@ namespace GestorDeEventosCulturales
                 (nombre, descripcion, fecha, hora, lugar, organizador, tipo, cupo, costo)
                 VALUES(@n,@d,@f,@h,@l,@o,@t,@cu,@c)";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, con)) 
+                    using (MySqlCommand cmd = new MySqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@n", e.Nombre);
                         cmd.Parameters.AddWithValue("@d", e.Descripcion);
@@ -128,7 +128,7 @@ namespace GestorDeEventosCulturales
 
                 string query = @"INSERT INTO evento_interes (id_usuario, id_evento, fecha_marcado)
                 VALUES (@u,@e,NOW())
-                ON DUPLICATE KEY UPDATE fecha_marcado = NOW()"; 
+                ON DUPLICATE KEY UPDATE fecha_marcado = NOW()";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
@@ -217,6 +217,52 @@ namespace GestorDeEventosCulturales
                             e.Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0;
 
                             lista.Add(e);
+                        }
+                    }
+                }
+            }
+
+            return lista;
+        }
+
+        public List<Evento> ObtenerEventosProximos()
+        {
+            List<Evento> lista = new List<Evento>();
+
+            DateTime hoy = DateTime.Today;
+            DateTime limite = hoy.AddDays(7);
+
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = @"SELECT * FROM Evento_cultural
+                                 WHERE fecha >= @hoy 
+                                 AND fecha <= @limite
+                                 ORDER BY fecha ASC";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@hoy", hoy);
+                    cmd.Parameters.AddWithValue("@limite", limite);
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            lista.Add(new Evento
+                            {
+                                Id = Convert.ToInt32(reader["id_evento"]),
+                                Nombre = reader["nombre"].ToString(),
+                                Descripcion = reader["descripcion"].ToString(),
+                                Fecha = Convert.ToDateTime(reader["fecha"]),
+                                Hora = reader["hora"] != DBNull.Value ? (TimeSpan)reader["hora"] : TimeSpan.Zero,
+                                Lugar = reader["lugar"].ToString(),
+                                Organizador = reader["organizador"].ToString(),
+                                Tipo = reader["tipo"].ToString(),
+                                Cupo = reader["cupo"] != DBNull.Value ? Convert.ToInt32(reader["cupo"]) : 0,
+                                Costo = reader["costo"] != DBNull.Value ? Convert.ToDouble(reader["costo"]) : 0
+                            });
                         }
                     }
                 }

@@ -138,7 +138,7 @@
             // 
             // btnMarcarInteres
             // 
-            this.btnMarcarInteres.Location = new System.Drawing.Point(171, 355);
+            this.btnMarcarInteres.Location = new System.Drawing.Point(278, 355);
             this.btnMarcarInteres.Name = "btnMarcarInteres";
             this.btnMarcarInteres.Size = new System.Drawing.Size(201, 70);
             this.btnMarcarInteres.TabIndex = 10;
@@ -148,7 +148,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(171, 431);
+            this.btnRegresar.Location = new System.Drawing.Point(278, 431);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(201, 70);
             this.btnRegresar.TabIndex = 11;
@@ -197,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(531, 513);
+            this.ClientSize = new System.Drawing.Size(752, 513);
             this.Controls.Add(this.lblCupo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblHora);
