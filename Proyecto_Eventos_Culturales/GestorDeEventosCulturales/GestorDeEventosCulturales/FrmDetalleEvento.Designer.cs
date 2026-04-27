@@ -44,6 +44,8 @@
             this.lblHora = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lblCupo = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblOrganizador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -138,7 +140,7 @@
             // 
             // btnMarcarInteres
             // 
-            this.btnMarcarInteres.Location = new System.Drawing.Point(171, 355);
+            this.btnMarcarInteres.Location = new System.Drawing.Point(278, 355);
             this.btnMarcarInteres.Name = "btnMarcarInteres";
             this.btnMarcarInteres.Size = new System.Drawing.Size(201, 70);
             this.btnMarcarInteres.TabIndex = 10;
@@ -148,7 +150,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(171, 431);
+            this.btnRegresar.Location = new System.Drawing.Point(278, 431);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(201, 70);
             this.btnRegresar.TabIndex = 11;
@@ -192,12 +194,32 @@
             this.lblCupo.TabIndex = 15;
             this.lblCupo.Text = "label8";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(156, 313);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 20);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Organizador:";
+            // 
+            // lblOrganizador
+            // 
+            this.lblOrganizador.AutoSize = true;
+            this.lblOrganizador.Location = new System.Drawing.Point(274, 313);
+            this.lblOrganizador.Name = "lblOrganizador";
+            this.lblOrganizador.Size = new System.Drawing.Size(51, 20);
+            this.lblOrganizador.TabIndex = 17;
+            this.lblOrganizador.Text = "label9";
+            // 
             // FrmDetalleEvento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(531, 513);
+            this.ClientSize = new System.Drawing.Size(752, 513);
+            this.Controls.Add(this.lblOrganizador);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.lblCupo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblHora);
@@ -240,5 +262,7 @@
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblCupo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblOrganizador;
     }
 }

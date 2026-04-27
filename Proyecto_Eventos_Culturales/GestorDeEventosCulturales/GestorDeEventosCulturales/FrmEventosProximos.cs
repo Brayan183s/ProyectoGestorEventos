@@ -21,8 +21,19 @@ namespace GestorDeEventosCulturales
 
         private void FrmEventosProximos_Load(object sender, EventArgs e)
         {
-            LimpiarCampos();
+            EventoDAO dao = new EventoDAO();
+            dgvEventos.DataSource = dao.ObtenerEventosProximos();
+
+            dgvEventos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //CargarEventosProximos();
+            //LimpiarCampos();
         
+        }
+
+        private void CargarEventosProximos()
+        {
+            EventoDAO dao = new EventoDAO();
+            dgvEventos.DataSource = dao.ObtenerEventosProximos();
         }
 
         private void CargarEventos()
