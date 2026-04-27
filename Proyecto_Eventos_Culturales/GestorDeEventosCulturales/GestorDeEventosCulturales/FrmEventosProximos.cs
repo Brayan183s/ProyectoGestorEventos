@@ -15,6 +15,7 @@ namespace GestorDeEventosCulturales
         public FrmEventosProximos(Usuario u)
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
             usuarioActual = u;
         }
 
