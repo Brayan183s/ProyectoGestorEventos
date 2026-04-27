@@ -110,7 +110,8 @@ namespace GestorDeEventosCulturales
                                 Hora = reader.GetTimeSpan("hora"),
                                 Lugar = reader.GetString("lugar"),
                                 Costo = reader.GetDouble("costo"),
-                                Cupo = reader.GetInt32("cupo")
+                                Cupo = reader.GetInt32("cupo"),
+                                Organizador = reader.GetString("organizador")
                             };
                         }
                     }

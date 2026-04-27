@@ -61,3 +61,11 @@ ALTER DATABASE sgec CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 ALTER TABLE Evento_cultural 
 CONVERT TO CHARACTER SET utf8mb4 
 COLLATE utf8mb4_0900_ai_ci;
+
+/* inserciones de prueba */
+INSERT INTO Evento_cultural 
+(nombre, descripcion, fecha, hora, lugar, organizador, tipo, cupo, costo) 
+VALUES
+('Kermés escolar', 'Evento con comida, juegos y convivencia familiar.', '2026-04-26', '17:00:00', 'Río Grande Centro', 'Escuela Primaria', 'Social', 100, 20),
+('Partido de fútbol', 'Encuentro deportivo entre equipos juveniles.', '2026-04-26', '19:00:00', 'Unidad Deportiva Río Grande', 'Liga Municipal', 'Deportivo', 200, 30),
+('Desfile cultural', 'Recorrido con música y danza tradicional.', '2026-04-27', '18:00:00', 'Fresnillo Centro', 'Ayuntamiento', 'Cultural', 300, 0);

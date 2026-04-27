@@ -41,6 +41,7 @@ namespace GestorDeEventosCulturales
                 lblCosto.Text = "$ " + e.Costo.ToString();
                 lblCupo.Text = e.Cupo.ToString();
                 lblDescripcion.Text = e.Descripcion;
+                lblOrganizador.Text = e.Organizador.ToString();
             }
         }
 
