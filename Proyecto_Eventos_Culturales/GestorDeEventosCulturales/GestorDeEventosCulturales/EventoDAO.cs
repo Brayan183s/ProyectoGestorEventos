@@ -180,23 +180,24 @@ namespace GestorDeEventosCulturales
             return lista;
         }
 
-        public List<Evento> FiltrarSimple(DateTime desde, DateTime hasta, double costoMax)
+        public List<Evento> FiltrarEventos(DateTime desde, DateTime hasta, double costoMin, double costoMax)
         {
             List<Evento> lista = new List<Evento>();
 
             using (MySqlConnection con = new ConexionBD().ObtenerConexion())
             {
                 con.Open();
-
-                string query = @"SELECT * FROM Evento_cultural 
+                string query = @"SELECT id_evento, nombre, descripcion, fecha, hora, lugar, organizador, tipo, cupo, costo 
+                         FROM Evento_cultural
                          WHERE fecha BETWEEN @desde AND @hasta
-                         AND costo <= @costo";
+                         AND costo BETWEEN @min AND @max";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@desde", desde);
-                    cmd.Parameters.AddWithValue("@hasta", hasta);
-                    cmd.Parameters.AddWithValue("@costo", costoMax);
+                    cmd.Parameters.AddWithValue("@desde", desde.Date);
+                    cmd.Parameters.AddWithValue("@hasta", hasta.Date);
+                    cmd.Parameters.AddWithValue("@min", costoMin);
+                    cmd.Parameters.AddWithValue("@max", costoMax);
 
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {

@@ -21,7 +21,6 @@ namespace GestorDeEventosCulturales
         private void FrmEventosProximos_Load(object sender, EventArgs e)
         {
             LimpiarCampos();
-            CargarEventos();
         
         }
 
@@ -68,38 +67,58 @@ namespace GestorDeEventosCulturales
             DateTime desde = dtpDesde.Value.Date;
             DateTime hasta = dtpHasta.Value.Date;
 
-            double costo;
+            double costoMin, costoMax;
 
-            // validar costo
-            if (!double.TryParse(txtCostoMax.Text, out costo))
-            {
-                MessageBox.Show("Ingresa un costo válido");
-                return;
-            }
-
-            // validar fechas
+            // 🔒 validar fechas
             if (desde > hasta)
             {
-                MessageBox.Show("Fecha incorrecta");
+                MessageBox.Show("La fecha inicial no puede ser mayor");
                 return;
             }
 
+            // 🔒 validar campos vacíos
+            if (string.IsNullOrWhiteSpace(txtCostoMin.Text) ||
+                string.IsNullOrWhiteSpace(txtCostoMax.Text))
+            {
+                MessageBox.Show("Ingresa ambos costos");
+                return;
+            }
+
+            // 🔒 validar números
+            if (!double.TryParse(txtCostoMin.Text, out costoMin))
+            {
+                MessageBox.Show("Costo mínimo inválido");
+                return;
+            }
+
+            if (!double.TryParse(txtCostoMax.Text, out costoMax))
+            {
+                MessageBox.Show("Costo máximo inválido");
+                return;
+            }
+
+            // 🔒 validar lógica
+            if (costoMin > costoMax)
+            {
+                MessageBox.Show("Costo mínimo no puede ser mayor");
+                return;
+            }
+
+            // 🔥 aplicar filtro
             dgvEventos.DataSource = null;
-            dgvEventos.DataSource = dao.FiltrarSimple(desde, hasta, costo);
+            dgvEventos.DataSource = dao.FiltrarEventos(desde, hasta, costoMin, costoMax);
         }
 
         private void LimpiarCampos()
         {
-            // 🔹 Limpiar campos de costo
             txtCostoMin.Text = "";
             txtCostoMax.Text = "";
 
-            // 🔹 Resetear fechas
             dtpDesde.Value = DateTime.Today;
             dtpHasta.Value = DateTime.Today;
 
-            // 🔹 Recargar todos los eventos
-            CargarEventos();
+            EventoDAO dao = new EventoDAO();
+            dgvEventos.DataSource = dao.ObtenerEventos();
         }
 
 
