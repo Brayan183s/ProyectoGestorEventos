@@ -51,7 +51,7 @@ namespace GestorDeEventosCulturales
                 .OrderBy(e => e.Fecha)
                 .Select(e => new EventoCalendario
                 {
-                    Id = e.Id, // 🔥 guardar el id
+                    Id = e.Id,
                     Fecha = e.Fecha.ToShortDateString(),
                     Evento = e.Nombre + " - " + e.Lugar
                 })

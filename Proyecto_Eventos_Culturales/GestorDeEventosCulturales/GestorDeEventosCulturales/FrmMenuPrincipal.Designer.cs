@@ -35,6 +35,7 @@
             this.btn_calendario = new System.Windows.Forms.Button();
             this.btn_cerrarSesion = new System.Windows.Forms.Button();
             this.lblBienvenida = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -89,7 +90,7 @@
             // 
             // btn_cerrarSesion
             // 
-            this.btn_cerrarSesion.Location = new System.Drawing.Point(388, 606);
+            this.btn_cerrarSesion.Location = new System.Drawing.Point(384, 604);
             this.btn_cerrarSesion.Name = "btn_cerrarSesion";
             this.btn_cerrarSesion.Size = new System.Drawing.Size(376, 69);
             this.btn_cerrarSesion.TabIndex = 5;
@@ -106,11 +107,22 @@
             this.lblBienvenida.TabIndex = 7;
             this.lblBienvenida.Text = "Usuario";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1081, 680);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "V1.0";
+            // 
             // FrmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 709);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1135, 705);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.btn_cerrarSesion);
             this.Controls.Add(this.btn_calendario);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Button btn_calendario;
         private System.Windows.Forms.Button btn_cerrarSesion;
         private System.Windows.Forms.Label lblBienvenida;
+        private System.Windows.Forms.Label label2;
     }
 }

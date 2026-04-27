@@ -38,17 +38,17 @@
             // dgvEventos
             // 
             this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEventos.Location = new System.Drawing.Point(201, 163);
+            this.dgvEventos.Location = new System.Drawing.Point(55, 147);
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.RowTemplate.Height = 28;
-            this.dgvEventos.Size = new System.Drawing.Size(723, 384);
+            this.dgvEventos.Size = new System.Drawing.Size(736, 384);
             this.dgvEventos.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(343, 66);
+            this.label1.Location = new System.Drawing.Point(203, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(457, 64);
             this.label1.TabIndex = 1;
@@ -56,7 +56,7 @@
             // 
             // btnVerDetalle
             // 
-            this.btnVerDetalle.Location = new System.Drawing.Point(467, 579);
+            this.btnVerDetalle.Location = new System.Drawing.Point(327, 555);
             this.btnVerDetalle.Name = "btnVerDetalle";
             this.btnVerDetalle.Size = new System.Drawing.Size(188, 70);
             this.btnVerDetalle.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(467, 672);
+            this.btnCancelar.Location = new System.Drawing.Point(327, 631);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(188, 68);
             this.btnCancelar.TabIndex = 3;
@@ -79,7 +79,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1141, 752);
+            this.ClientSize = new System.Drawing.Size(846, 715);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnVerDetalle);
             this.Controls.Add(this.label1);

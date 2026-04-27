@@ -28,8 +28,7 @@ namespace GestorDeEventosCulturales
         {
             EventoDAO dao = new EventoDAO();
             dgvEventos.DataSource = dao.ObtenerEventos();
-
-            // 🔥 AHORA sí existen columnas
+       
             
             dgvEventos.Columns["Id"].Visible = false;
             dgvEventos.Columns["Descripcion"].Visible = false;
@@ -69,14 +68,13 @@ namespace GestorDeEventosCulturales
 
             double costoMin, costoMax;
 
-            // 🔒 validar fechas
+     
             if (desde > hasta)
             {
                 MessageBox.Show("La fecha inicial no puede ser mayor");
                 return;
             }
 
-            // 🔒 validar campos vacíos
             if (string.IsNullOrWhiteSpace(txtCostoMin.Text) ||
                 string.IsNullOrWhiteSpace(txtCostoMax.Text))
             {
@@ -84,7 +82,7 @@ namespace GestorDeEventosCulturales
                 return;
             }
 
-            // 🔒 validar números
+        
             if (!double.TryParse(txtCostoMin.Text, out costoMin))
             {
                 MessageBox.Show("Costo mínimo inválido");
@@ -97,14 +95,14 @@ namespace GestorDeEventosCulturales
                 return;
             }
 
-            // 🔒 validar lógica
+         
             if (costoMin > costoMax)
             {
                 MessageBox.Show("Costo mínimo no puede ser mayor");
                 return;
             }
 
-            // 🔥 aplicar filtro
+     
             dgvEventos.DataSource = null;
             dgvEventos.DataSource = dao.FiltrarEventos(desde, hasta, costoMin, costoMax);
         }
