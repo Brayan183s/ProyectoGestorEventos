@@ -271,6 +271,22 @@ namespace GestorDeEventosCulturales
 
             return lista;
         }
+
+        public bool Eliminar(int id)
+        {
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = "DELETE FROM Evento_cultural WHERE id_evento = @id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@id", id);
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
     }
 }
        
