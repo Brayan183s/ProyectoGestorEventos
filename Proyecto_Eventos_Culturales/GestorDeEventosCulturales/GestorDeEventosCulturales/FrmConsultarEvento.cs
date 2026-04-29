@@ -22,6 +22,11 @@ namespace GestorDeEventosCulturales
 
         private void FrmConsultarEvento_Load(object sender, EventArgs e)
         {
+            if (usuarioActual.TipoUsuario != "administrador") 
+            {
+                btnEditar.Visible = false;
+                btnEliminar.Visible = false;
+            }
             CargarEventos();
             dgvEventos.Columns["Id"].Visible = false;
             dgvEventos.Columns["Descripcion"].Visible = false;
