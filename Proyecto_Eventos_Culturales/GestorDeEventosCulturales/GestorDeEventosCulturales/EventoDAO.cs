@@ -287,6 +287,42 @@ namespace GestorDeEventosCulturales
                 }
             }
         }
+
+        public bool Actualizar(Evento e)
+        {
+            using (MySqlConnection con = new ConexionBD().ObtenerConexion())
+            {
+                con.Open();
+
+                string query = @"UPDATE Evento_cultural SET 
+                        nombre=@n,
+                        descripcion=@d,
+                        fecha=@f,
+                        hora=@h,
+                        lugar=@l,
+                        organizador=@o,
+                        tipo=@t,
+                        cupo=@cu,
+                        costo=@c
+                        WHERE id_evento=@id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@n", e.Nombre);
+                    cmd.Parameters.AddWithValue("@d", e.Descripcion);
+                    cmd.Parameters.AddWithValue("@f", e.Fecha);
+                    cmd.Parameters.AddWithValue("@h", e.Hora);
+                    cmd.Parameters.AddWithValue("@l", e.Lugar);
+                    cmd.Parameters.AddWithValue("@o", e.Organizador);
+                    cmd.Parameters.AddWithValue("@t", e.Tipo);
+                    cmd.Parameters.AddWithValue("@cu", e.Cupo);
+                    cmd.Parameters.AddWithValue("@c", e.Costo);
+                    cmd.Parameters.AddWithValue("@id", e.Id);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
     }
 }
        
