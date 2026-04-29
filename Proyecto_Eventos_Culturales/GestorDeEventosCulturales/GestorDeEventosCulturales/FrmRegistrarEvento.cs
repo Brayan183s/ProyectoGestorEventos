@@ -44,7 +44,7 @@ namespace GestorDeEventosCulturales
         {
             try
             {
-                // 🔒 VALIDACIONES PRIMERO
+                
                 if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                     string.IsNullOrWhiteSpace(txtCosto.Text))
                 {
@@ -73,16 +73,16 @@ namespace GestorDeEventosCulturales
 
                 EventoDAO dao = new EventoDAO();
 
-                // 🔥 AQUÍ ESTÁ LA CLAVE
+                
                 if (idEvento == null)
                 {
-                    // INSERT
+                    
                     if (dao.Insertar(e1))
                         MessageBox.Show("Evento registrado correctamente");
                 }
                 else
                 {
-                    // UPDATE
+                    
                     e1.Id = idEvento.Value;
 
                     if (dao.Actualizar(e1))

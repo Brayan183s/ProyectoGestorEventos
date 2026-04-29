@@ -69,7 +69,7 @@ namespace GestorDeEventosCulturales
 
             int id = Convert.ToInt32(dgvEventos.CurrentRow.Cells["Id"].Value);
 
-            FrmRegistrarEvento f = new FrmRegistrarEvento(id); // modo edición
+            FrmRegistrarEvento f = new FrmRegistrarEvento(id);
             f.ShowDialog();
 
             CargarEventos();
@@ -78,6 +78,41 @@ namespace GestorDeEventosCulturales
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+            if (usuarioActual.TipoUsuario != "administrador")
+            {
+                MessageBox.Show("No tienes permisos");
+                return;
+            }
+
+            if (dgvEventos.CurrentRow == null)
+            {
+                MessageBox.Show("Selecciona un evento");
+                return;
+            }
+
+            int id = Convert.ToInt32(dgvEventos.CurrentRow.Cells["Id"].Value);
+
+            DialogResult r = MessageBox.Show(
+                "¿Seguro que deseas eliminar este evento?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (r == DialogResult.Yes)
+            {
+                EventoDAO dao = new EventoDAO();
+
+                if (dao.Eliminar(id))
+                {
+                    MessageBox.Show("Evento eliminado correctamente");
+                    CargarEventos(); // 🔄 refresca el grid
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar");
+                }
+            }
         }
     }
 }
