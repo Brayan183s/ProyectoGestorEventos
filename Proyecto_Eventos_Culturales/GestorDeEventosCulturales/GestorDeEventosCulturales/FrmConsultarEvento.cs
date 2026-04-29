@@ -12,6 +12,7 @@ namespace GestorDeEventosCulturales
     public partial class FrmConsultarEvento : Form
     {
         private Usuario usuarioActual;
+
         public FrmConsultarEvento(Usuario u)
         {
             InitializeComponent();
@@ -53,6 +54,30 @@ namespace GestorDeEventosCulturales
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (usuarioActual.TipoUsuario != "administrador")
+            {
+                MessageBox.Show("No tienes permisos");
+                return;
+            }
+
+            if (dgvEventos.CurrentRow == null)
+                return;
+
+            int id = Convert.ToInt32(dgvEventos.CurrentRow.Cells["Id"].Value);
+
+            FrmRegistrarEvento f = new FrmRegistrarEvento(id); // modo edición
+            f.ShowDialog();
+
+            CargarEventos();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
