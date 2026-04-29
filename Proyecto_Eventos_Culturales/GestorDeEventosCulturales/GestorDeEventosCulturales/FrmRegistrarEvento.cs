@@ -11,16 +11,53 @@ namespace GestorDeEventosCulturales
 {
     public partial class FrmRegistrarEvento : Form
     {
+        private int? idEvento = null;
+        public FrmRegistrarEvento(int id)
+        {
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            idEvento = id;
+            CargarDatos();
+        }
         public FrmRegistrarEvento()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
+        private void CargarDatos()
+        {
+            EventoDAO dao = new EventoDAO();
+            Evento e = dao.ObtenerPorId(idEvento.Value);
+
+            txtNombre.Text = e.Nombre;
+            txtDescripcion.Text = e.Descripcion;
+            dtpFecha.Value = e.Fecha;
+            txtLugar.Text = e.Lugar;
+            txtOrganizador.Text = e.Organizador;
+            cmbTipo.Text = e.Tipo;
+            txtCupo.Text = e.Cupo.ToString();
+            txtCosto.Text = e.Costo.ToString();
+        }
+
         private void Txt_Guardar_Click(object sender, EventArgs e)
         {
             try
             {
+                
+                if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtCosto.Text))
+                {
+                    MessageBox.Show("Completa los campos obligatorios");
+                    return;
+                }
+
+                if (cmbTipo.SelectedItem == null)
+                {
+                    MessageBox.Show("Selecciona un tipo de evento");
+                    return;
+                }
+
                 Evento e1 = new Evento()
                 {
                     Nombre = txtNombre.Text,
@@ -36,25 +73,23 @@ namespace GestorDeEventosCulturales
 
                 EventoDAO dao = new EventoDAO();
 
-                if (dao.Insertar(e1))
+                
+                if (idEvento == null)
                 {
-                    MessageBox.Show("Evento guardado correctamente");
-                    LimpiarCampos();
+                    
+                    if (dao.Insertar(e1))
+                        MessageBox.Show("Evento registrado correctamente");
                 }
                 else
                 {
-                    MessageBox.Show("Error al guardar");
+                    
+                    e1.Id = idEvento.Value;
+
+                    if (dao.Actualizar(e1))
+                        MessageBox.Show("Evento actualizado correctamente");
                 }
-                if (txtNombre.Text == "" || txtCosto.Text == "")
-                {
-                    MessageBox.Show("Completa los campos obligatorios");
-                    return;
-                }
-                if (cmbTipo.SelectedItem == null)
-                {
-                    MessageBox.Show("Selecciona un tipo de evento");
-                    return;
-                }
+
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -114,7 +114,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 20);
             this.label2.TabIndex = 8;
-            this.label2.Text = "V1.0";
+            this.label2.Text = "V1.2";
             // 
             // FrmMenuPrincipal
             // 
